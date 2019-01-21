@@ -10,7 +10,10 @@ class SpidySpider(CrawlSpider):
     start_urls = ['http://http://www.abacusconsultants.org//']
 
     rules = (
-        Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
+        Rule(LinkExtractor(allow='/index/'), follow=True),
+        Rule(LinkExtractor(allow='/view/'), callback='parse_item')
+)
+
     )
 
     def parse_item(self, response):
